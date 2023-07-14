@@ -8,4 +8,5 @@ Unlike [library1](../library1) which offers `publishRelease...` Gradle tasks onl
 you'll notice that this library offers both `publishDebug...` and `publishRelease...` Gradle tasks.
 
 One problem to be aware of when defining a library as in this module (i.e. with multiple publication variants)
-is that the library is published without the javadoc. This seems to me to be a bug.
+is that the `publishDebug...` or `publishRelease...` Gradle tasks publish the library without its supporting javadoc files.
+This seems to me to be a bug.
