@@ -1,4 +1,4 @@
-# Demonstration of a library which has a single publication variant
+# Demonstration of an Android library which has a single publication variant
 
 This Android library module demonstrates how to define a library which has a single publication variant.
 
