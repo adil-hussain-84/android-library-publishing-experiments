@@ -1,0 +1,72 @@
+plugins {
+    id 'com.android.library'
+    id 'maven-publish'
+    id 'org.jetbrains.kotlin.android'
+}
+
+android {
+    namespace 'com.tazkiyatech.experiments.library'
+    compileSdk 33
+
+    defaultConfig {
+        minSdk 24
+        targetSdk 33
+        testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
+    }
+
+    buildTypes {
+        debug {
+            minifyEnabled false
+            shrinkResources false
+        }
+
+        release {
+            minifyEnabled false
+            shrinkResources false
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_11
+        targetCompatibility JavaVersion.VERSION_11
+    }
+
+    kotlinOptions {
+        jvmTarget = JavaVersion.VERSION_11
+    }
+
+    publishing {
+        multipleVariants {
+            withJavadocJar()
+            withSourcesJar()
+        }
+    }
+}
+
+afterEvaluate {
+    publishing {
+        publications {
+            debug(MavenPublication) {
+                from components.debug
+
+                groupId 'com.tazkiyatech'
+                artifactId 'library2'
+                version '1.0'
+            }
+            release(MavenPublication) {
+                from components.release
+
+                groupId 'com.tazkiyatech'
+                artifactId 'library2'
+                version '1.0'
+            }
+        }
+
+        repositories {
+            maven {
+                name = 'BuildFolder'
+                url = "${project.buildDir}/repository"
+            }
+        }
+    }
+}
